@@ -13,6 +13,10 @@ fi
 nix-channel --add https://nixos.org/channels/nixos-${NIX_OS_VERSION} nixpkgs \
     && nix-channel --update || exit 1
 
+if ! command -v make >/dev/null 2>&1; then
+    nix-env -i gnumake
+fi
+
 if ! command -v git >/dev/null 2>&1; then
     nix-env -i git
 fi
@@ -28,14 +32,7 @@ if [ ! -d /etc/nixos ]; then
     mkdir -m 0755 -p /nix/var/nix/{profiles,gcroots}/per-user/$USER
 fi
 
-nix-env -i home-manager \
-    && nix-channel --add "${HM_URL}" home-manager \
-    && nix-channel --update \
-        || exit 1
-
-if ! command -v make >/dev/null 2>&1; then
-    nix-env -i gnumake
-fi
+nix-channel --add "${HM_URL}" home-manager || exit 1
 
 echo "Bootstrapping finished."
 echo "Enter ~/.emacs.d, fetch and check out a branch, and run make init."
