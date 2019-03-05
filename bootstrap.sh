@@ -33,5 +33,9 @@ nix-env -i home-manager \
     && nix-channel --update \
         || exit 1
 
+if ! command -v make >/dev/null 2>&1; then
+    nix-env -i gnumake
+fi
+
 echo "Bootstrapping finished."
 echo "Enter ~/.emacs.d, fetch and check out a branch, and run make init."
