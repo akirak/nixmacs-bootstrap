@@ -1,10 +1,24 @@
 * Foundation for my Nix + Emacs setup
 [[https://circleci.com/gh/akirak/nixmacs-bootstrap][https://circleci.com/gh/akirak/nixmacs-bootstrap.svg?style=svg]]
 
-This repository contains a script which automates the following tasks for installing Emacs:
+This repository contains a collection of helper scripts for configuring my machines.
+
+- A shell script which installs Nix and [[https://github.com/akirak/emacs.d][my Emacs configuration]].
+- A Docker script of a NixOS environment for automated testing of the Emacs configuration.
+
+** Installation
+Run the following in command in your UNIX shell:
+
+#+begin_src sh
+  curl https://raw.githubusercontent.com/akirak/nixmacs-bootstrap/master/bootstrap.sh \
+       sh
+
+#+end_src
+
+The bootstrapping script does the following tasks needed to install my Emacs configuration:
 
 1. Install [[https://nixos.org/nix/][Nix package manager]] if it is not installed yet.
 2. Add the Nix channel of [[https://github.com/rycee/home-manager][home-manager]] to Nix.
-2. Initialise =~/.emacs.d= and add the URL of [[https://github.com/akirak/emacs.d][my Emacs configuration]] as its remote repository.
-
+3. Initialise =~/.emacs.d= and add the URL of [[https://github.com/akirak/emacs.d][my Emacs configuration]] as its remote repository.
+** Extras
 This repository also contains [[https://hub.docker.com/r/akirak/nixmacs-bootstrap][a Docker image]] of a [[https://nixos.org][NixOS]] environment with the setup, which is used for automated testing of the Emacs configuration.
