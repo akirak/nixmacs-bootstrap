@@ -7,6 +7,8 @@ This repository contains a collection of helper scripts for configuring my machi
 - A Docker script of a NixOS environment for automated testing of the Emacs configuration.
 
 ** Installation
+*** Generic Linux
+
 Run the following in command in your UNIX shell:
 
 #+begin_src sh
@@ -20,5 +22,13 @@ The bootstrapping script does the following tasks needed to install my Emacs con
 1. Install [[https://nixos.org/nix/][Nix package manager]] if it is not installed yet.
 2. Add the Nix channel of [[https://github.com/rycee/home-manager][home-manager]] to Nix.
 3. Initialise =~/.emacs.d= and add the URL of [[https://github.com/akirak/emacs.d][my Emacs configuration]] as its remote repository.
+*** Windows without WSL
+Run this command on bash on Windows:
+
+#+begin_src sh
+  curl https://raw.githubusercontent.com/akirak/nixmacs-bootstrap/master/bootstrap-mingw.sh | sh
+#+end_src
+
+Then you can use Emacs without running =make init=. It doesn't have Nix, but some packages are installed by a script bundled with the configuration.
 ** Extras
 This repository also contains [[https://hub.docker.com/r/akirak/nixmacs-bootstrap][a Docker image]] of a [[https://nixos.org][NixOS]] environment with the setup, which is used for automated testing of the Emacs configuration.
