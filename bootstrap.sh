@@ -27,10 +27,6 @@ if ! command -v systemctl >/dev/null 2>&1; then
     nix-env -i systemd
 fi
 
-if ! command -v sudo >/dev/null 2>&1; then
-    nix-env -i sudo
-fi
-
 mkdir -p "${USER_EMACS_DIR}"
 cd "${USER_EMACS_DIR}"
 if [ ! -d .git ]; then
