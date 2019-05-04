@@ -21,6 +21,12 @@ if ! command -v git >/dev/null 2>&1; then
     nix-env -i git
 fi
 
+if ! command -v systemctl >/dev/null 2>&1; then
+    echo "Installing systemd from nixpkgs."
+    echo "This may not work on non-NixOS distribution."
+    nix-env -i systemd
+fi
+
 mkdir -p "${USER_EMACS_DIR}"
 cd "${USER_EMACS_DIR}"
 if [ ! -d .git ]; then
